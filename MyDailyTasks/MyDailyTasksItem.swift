@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyDailyTasksItem: NSObject {
+class MyDailyTasksItem: NSObject, Codable {
     
     var text = ""
     var checked = false
