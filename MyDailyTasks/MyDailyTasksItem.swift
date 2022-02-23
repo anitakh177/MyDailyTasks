@@ -11,4 +11,5 @@ class MyDailyTasksItem: NSObject, Codable {
     
     var text = ""
     var checked = false
+    var date = Date()
 }

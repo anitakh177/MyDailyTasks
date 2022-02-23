@@ -65,6 +65,11 @@ class MyDailyTasksViewController: UITableViewController, AddAndEditItemViewContr
         
         configureText(for: cell, with: item)
         configureCheckmark(for: cell, with: item)
+        
+        let date = items[indexPath.row].date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM, dd, YYYY"
+        cell.detailTextLabel?.text = formatter.string(from: date)
         return cell
  
     }
@@ -97,17 +102,6 @@ class MyDailyTasksViewController: UITableViewController, AddAndEditItemViewContr
     }
     
     
-    
-  /*  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        items.remove(at: indexPath.row)
-        
-        let indexPaths = [indexPath]
-        tableView.deleteRows(at: indexPaths, with: .automatic)
-        
-    }
-    
-    */
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         

@@ -24,8 +24,8 @@ class AddAndEditItemViewController: UITableViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var textField: UITextField!
-    
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    @IBOutlet var datePicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,13 +54,16 @@ class AddAndEditItemViewController: UITableViewController, UITextFieldDelegate {
         
         if let item = itemToEdit {
             item.text = textField.text!
+            item.date = datePicker.date
             delegate?.addAndEditItemViewController(self, didFinishEditing: item)
+            
         } else {
         
-        let item = MyDailyTasksItem()
-        item.text = textField.text!
-        
-        delegate?.addAndEditItemViewController(self, didFinishAdiing: item)
+            let item = MyDailyTasksItem()
+            item.text = textField.text!
+            item.date = datePicker.date
+            delegate?.addAndEditItemViewController(self, didFinishAdiing: item)
+            
         
     }
     }
@@ -88,6 +91,8 @@ class AddAndEditItemViewController: UITableViewController, UITextFieldDelegate {
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         doneBarButton.isEnabled = false
+        datePicker.isEnabled = false
+        
         return true
     }
 }
