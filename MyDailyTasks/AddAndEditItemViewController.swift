@@ -11,16 +11,15 @@ import UserNotifications
 protocol AddAndEditItemViewControllerDelegate: AnyObject {
     
     func addAndEditItemViewControllerDidCancel(_ controller: AddAndEditItemViewController)
-    
     func addAndEditItemViewController(_ controller: AddAndEditItemViewController, didFinishAdiing item: MyDailyTasksItem)
     func addAndEditItemViewController(_ controller: AddAndEditItemViewController, didFinishEditing item: MyDailyTasksItem)
-    
 }
 
 class AddAndEditItemViewController: UITableViewController, UITextFieldDelegate{
 
     weak var delegate: AddAndEditItemViewControllerDelegate?
     var itemToEdit: MyDailyTasksItem?
+    let skyBlueColor = UIColor(red: 242/255, green: 247/255, blue: 255/255, alpha: 1)
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
@@ -30,7 +29,7 @@ class AddAndEditItemViewController: UITableViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
-        
+        self.tableView.backgroundColor = skyBlueColor
         if let item = itemToEdit {
              title = "Edit Item"
             textField.text = item.text
@@ -43,6 +42,11 @@ class AddAndEditItemViewController: UITableViewController, UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         textField.becomeFirstResponder()
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
+
     }
     // MARK: - Actions
 
@@ -99,9 +103,10 @@ class AddAndEditItemViewController: UITableViewController, UITextFieldDelegate{
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
+
         doneBarButton.isEnabled = false
-        datePicker.isEnabled = false
-        
         return true
     }
+    
+    
 }

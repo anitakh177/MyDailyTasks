@@ -8,10 +8,12 @@
 import UIKit
 import UserNotifications
 
+
 class MyDailyTasksViewController: UITableViewController, AddAndEditItemViewControllerDelegate {
     
     var items = [MyDailyTasksItem]()
     let skyBlueColor = UIColor(red: 242/255, green: 247/255, blue: 255/255, alpha: 1)
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,7 @@ class MyDailyTasksViewController: UITableViewController, AddAndEditItemViewContr
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = UIColor.clear
+
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,7 +38,6 @@ class MyDailyTasksViewController: UITableViewController, AddAndEditItemViewContr
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyDailyTasksCell", for: indexPath)
         
         let item = items[indexPath.row]
-        
         configureText(for: cell, with: item)
         configureCheckmark(for: cell, with: item)
         
@@ -143,6 +145,7 @@ class MyDailyTasksViewController: UITableViewController, AddAndEditItemViewContr
             if let cell = tableView.cellForRow(at: indexPath) {
                 configureText(for: cell, with: item)
             }
+            
         }
         navigationController?.popViewController(animated: true)
         saveMyDaileTasksItem()
@@ -186,4 +189,5 @@ class MyDailyTasksViewController: UITableViewController, AddAndEditItemViewContr
             }
         }
     }
+    
 }
