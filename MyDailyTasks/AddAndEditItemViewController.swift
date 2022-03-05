@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 protocol AddAndEditItemViewControllerDelegate: AnyObject {
     
@@ -16,16 +17,15 @@ protocol AddAndEditItemViewControllerDelegate: AnyObject {
     
 }
 
-class AddAndEditItemViewController: UITableViewController, UITextFieldDelegate {
+class AddAndEditItemViewController: UITableViewController, UITextFieldDelegate{
 
     weak var delegate: AddAndEditItemViewControllerDelegate?
-    
     var itemToEdit: MyDailyTasksItem?
-    
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
-    @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var switchOn: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +35,16 @@ class AddAndEditItemViewController: UITableViewController, UITextFieldDelegate {
              title = "Edit Item"
             textField.text = item.text
             doneBarButton.isEnabled = true
+            switchOn.isOn = item.shouldRemind
+            datePicker.date = item.date
         }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         textField.becomeFirstResponder()
-        
-       
     }
-    // MARK: - Table view data source
+    // MARK: - Actions
 
     @IBAction func cancel() {
         delegate?.addAndEditItemViewControllerDidCancel(self)
@@ -54,18 +54,27 @@ class AddAndEditItemViewController: UITableViewController, UITextFieldDelegate {
         
         if let item = itemToEdit {
             item.text = textField.text!
+            item.shouldRemind = switchOn.isOn
             item.date = datePicker.date
+            item.scheduleNotification()
             delegate?.addAndEditItemViewController(self, didFinishEditing: item)
-            
         } else {
-        
             let item = MyDailyTasksItem()
             item.text = textField.text!
+            item.shouldRemind = switchOn.isOn
             item.date = datePicker.date
+            item.scheduleNotification()
             delegate?.addAndEditItemViewController(self, didFinishAdiing: item)
-            
-        
+        }
     }
+    
+    @IBAction func shouldRemindIsOn(_ switchControl: UISwitch) {
+        textField.resignFirstResponder()
+        
+        if switchControl.isOn {
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {_, _ in })
+        }
     }
     
     //MARK: Table View Delegates

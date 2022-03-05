@@ -72,11 +72,11 @@
                         <sections>
                             <tableViewSection id="710-c0-e6b">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyDailyTasksCell" rowHeight="300" id="gNw-IA-WJH">
-                                        <rect key="frame" x="0.0" y="18" width="375" height="300"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyDailyTasksCell" rowHeight="50" id="gNw-IA-WJH">
+                                        <rect key="frame" x="0.0" y="18" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gNw-IA-WJH" id="NtH-Tx-id8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name your task" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="LTr-Fe-Hkl">
@@ -88,17 +88,64 @@
                                                         <outlet property="delegate" destination="pw3-4i-GT1" id="8sW-Y5-cEl"/>
                                                     </connections>
                                                 </textField>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="hxp-8f-bFb">
-                                                    <rect key="frame" x="0.0" y="99" width="375" height="216"/>
-                                                </datePicker>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="hxp-8f-bFb" secondAttribute="trailing" id="MFs-8e-E2G"/>
-                                                <constraint firstItem="hxp-8f-bFb" firstAttribute="top" secondItem="LTr-Fe-Hkl" secondAttribute="bottom" constant="54" id="Qfm-MO-4OM"/>
-                                                <constraint firstItem="hxp-8f-bFb" firstAttribute="leading" secondItem="NtH-Tx-id8" secondAttribute="leading" id="YJ7-2e-Bvy"/>
                                                 <constraint firstItem="LTr-Fe-Hkl" firstAttribute="trailing" secondItem="NtH-Tx-id8" secondAttribute="trailingMargin" id="aQJ-hQ-eBG"/>
                                                 <constraint firstItem="LTr-Fe-Hkl" firstAttribute="leading" secondItem="NtH-Tx-id8" secondAttribute="leadingMargin" id="f77-wE-YlY"/>
                                                 <constraint firstItem="LTr-Fe-Hkl" firstAttribute="top" secondItem="NtH-Tx-id8" secondAttribute="topMargin" id="yTO-SM-Ed3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="tpc-jK-d76">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyDailyTasksCell" rowHeight="50" id="e5S-dB-Xno">
+                                        <rect key="frame" x="0.0" y="104" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e5S-dB-Xno" id="nE4-on-fYX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn Notifiaction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEB-3a-QP7">
+                                                    <rect key="frame" x="16" y="14.5" width="286" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GU5-mz-ifI">
+                                                    <rect key="frame" x="310" y="6" width="51" height="38"/>
+                                                    <connections>
+                                                        <action selector="shouldRemindIsOn:" destination="pw3-4i-GT1" eventType="valueChanged" id="ayy-Pw-4k2"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="OEB-3a-QP7" firstAttribute="leading" secondItem="nE4-on-fYX" secondAttribute="leading" constant="16" id="0ax-VT-sZ8"/>
+                                                <constraint firstItem="OEB-3a-QP7" firstAttribute="centerY" secondItem="GU5-mz-ifI" secondAttribute="centerY" id="Q88-7e-Vhp"/>
+                                                <constraint firstItem="GU5-mz-ifI" firstAttribute="leading" secondItem="OEB-3a-QP7" secondAttribute="trailing" constant="8" id="Ue9-7H-8Tw"/>
+                                                <constraint firstItem="GU5-mz-ifI" firstAttribute="top" secondItem="nE4-on-fYX" secondAttribute="top" constant="6" id="XrV-4c-unC"/>
+                                                <constraint firstAttribute="trailing" secondItem="GU5-mz-ifI" secondAttribute="trailing" constant="16" id="e6q-2P-vRp"/>
+                                                <constraint firstAttribute="bottom" secondItem="GU5-mz-ifI" secondAttribute="bottom" constant="6" id="fJv-N4-9uA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyDailyTasksCell" rowHeight="50" id="iS7-Zt-mxd">
+                                        <rect key="frame" x="0.0" y="154" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iS7-Zt-mxd" id="sVQ-Vn-EKZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="cvl-1s-83q">
+                                                    <rect key="frame" x="80" y="6" width="215" height="38"/>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="cvl-1s-83q" secondAttribute="trailing" constant="80" id="AQi-vs-gNc"/>
+                                                <constraint firstAttribute="bottom" secondItem="cvl-1s-83q" secondAttribute="bottom" constant="6" id="Div-4C-PRn"/>
+                                                <constraint firstItem="cvl-1s-83q" firstAttribute="top" secondItem="sVQ-Vn-EKZ" secondAttribute="top" constant="6" id="KEv-Dq-IPv"/>
+                                                <constraint firstItem="cvl-1s-83q" firstAttribute="leading" secondItem="sVQ-Vn-EKZ" secondAttribute="leading" constant="80" id="bUG-fi-9TI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -123,8 +170,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="datePicker" destination="hxp-8f-bFb" id="h9X-sl-Ajd"/>
+                        <outlet property="datePicker" destination="cvl-1s-83q" id="u64-MP-lsx"/>
                         <outlet property="doneBarButton" destination="CWH-Rc-G8R" id="sN3-4E-Z6U"/>
+                        <outlet property="switchOn" destination="GU5-mz-ifI" id="5ga-dV-Nr3"/>
                         <outlet property="textField" destination="LTr-Fe-Hkl" id="0Ac-zw-VQR"/>
                     </connections>
                 </tableViewController>
@@ -140,6 +188,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="qQQ-xu-Sca">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
