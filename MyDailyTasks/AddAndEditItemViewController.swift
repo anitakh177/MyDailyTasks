@@ -37,6 +37,7 @@ class AddAndEditItemViewController: UITableViewController, UITextFieldDelegate{
             switchOn.isOn = item.shouldRemind
             datePicker.date = item.date
         }
+        doneBarButton.isEnabled = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -103,10 +104,15 @@ class AddAndEditItemViewController: UITableViewController, UITextFieldDelegate{
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-
-        doneBarButton.isEnabled = false
+        
+            doneBarButton.isEnabled = false
+        
         return true
     }
     
+    
+}
+
+extension AddAndEditItemViewController {
     
 }

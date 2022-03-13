@@ -91,7 +91,16 @@ class MyDailyTasksViewController: UITableViewController, AddAndEditItemViewContr
         
         let label = cell.viewWithTag(1000) as! UILabel
         label.text = item.text
+       
     }
+    
+    /*func configureDate(for cell: UITableViewCell, with item: MyDailyTasksItem) {
+        let label = cell.viewWithTag(1001) as! UILabel
+        label.text = item.date
+        
+        
+        
+    } */
     
     func configureCheckmark(for cell: UITableViewCell, with item: MyDailyTasksItem) {
         
